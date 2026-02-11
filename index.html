@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evento de Corazón</title>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <!-- Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="style.css?v=3">
+</head>
+
+<body>
+
+    <video autoplay muted loop playsinline id="bg-video">
+        <source src="assets/Fondo.mp4" type="video/mp4">
+    </video>
+
+    <!-- Floating Item (Mermaid Pendant) -->
+    <div class="item-display" id="special-item">
+        <img src="assets/mermaids.png" alt="Mermaid Pendant">
+    </div>
+
+    <div class="interface-container" id="main-box">
+
+        <!-- Dialogue Section -->
+        <div class="dialogue-box">
+            <div id="text-container">
+                <span id="text-target"></span>
+            </div>
+
+            <div class="choices-container" id="choices-menu">
+                <button class="choice-btn" id="btn-yes">Sí, quiero ser tu Player 2.</button>
+                <button class="choice-btn" id="btn-no">No estoy listo...</button>
+            </div>
+
+            <div class="next-cursor" id="arrow"></div>
+        </div>
+
+        <!-- Portrait Section -->
+        <div class="portrait-box">
+            <img src="assets/Carlos%20256.png" alt="Carlos" class="portrait-img"
+                onerror="this.src='https://stardewvalleywiki.com/mediawiki/images/0/04/Abigail.png'">
+            <div class="name-tag">Carlos</div>
+        </div>
+
+    </div>
+
+    <!-- Logic Script -->
+    <script src="script.js?v=2"></script>
+</body>
+
+</html>

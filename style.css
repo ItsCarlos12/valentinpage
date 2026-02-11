@@ -1,0 +1,282 @@
+@font-face {
+    font-family: 'Stardew Valley';
+    src: url('assets/Stardew_Valley.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    --sv-bg-color: #ffecd6;
+    --sv-border-dark: #4c2813;
+    --sv-border-light: #e29f6d;
+    --sv-text-color: #522703;
+    --sv-highlight: #d13e3e;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2a2a2a;
+    font-family: 'Stardew Valley', 'VT323', monospace;
+    overflow: hidden;
+    user-select: none;
+    cursor: url('assets/Normal Selects.cur'), auto;
+}
+
+#bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    filter: brightness(0.8);
+}
+
+.interface-container {
+    position: absolute;
+    bottom: 50px;
+    width: 850px;
+    height: 220px;
+    display: flex;
+    background: linear-gradient(to bottom, #ffecd6, #f5dcb8);
+    border: 5px solid var(--sv-border-dark);
+    border-radius: 10px;
+    box-shadow:
+        inset 0 0 0 4px var(--sv-border-light),
+        0 10px 25px rgba(0, 0, 0, 0.7);
+    box-sizing: border-box;
+    transform: translateY(100%);
+    animation: slide-up 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.portrait-box {
+    width: 200px;
+    height: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    border-left: 4px solid var(--sv-border-light);
+    background-color: #ffdab3;
+    border-radius: 0 4px 4px 0;
+    background-image: url('assets/portrait-bg.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.portrait-img {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    image-rendering: pixelated;
+    filter: drop-shadow(4px 4px 0px rgba(0, 0, 0, 0.2));
+}
+
+.portrait-img.is-talking {
+    animation: portrait-talk 0.4s infinite alternate;
+}
+
+.name-tag {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #e4a672;
+    border: 3px solid #63452e;
+    padding: 4px 12px;
+    color: var(--sv-text-color);
+    font-size: 24px;
+    white-space: nowrap;
+    z-index: 20;
+    border-radius: 6px;
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
+}
+
+.dialogue-box {
+    flex-grow: 1;
+    height: 100%;
+    padding: 25px 35px;
+    box-sizing: border-box;
+    font-size: 30px;
+    color: var(--sv-text-color);
+    line-height: 1.25;
+    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+#text-container {
+    min-height: 50px;
+    margin-bottom: 15px;
+}
+
+.success-message {
+    color: var(--sv-highlight);
+    font-size: 0.9em;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    animation: bounce 1s infinite alternate;
+}
+
+.heart-icon {
+    width: 24px;
+    height: 24px;
+    margin: 0 8px;
+    image-rendering: pixelated;
+}
+
+.choices-container {
+    display: none;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    margin-top: auto;
+    padding-bottom: 5px;
+}
+
+.choice-btn {
+    background: transparent;
+    border: none;
+    font-family: 'Stardew Valley', 'VT323', monospace;
+    font-size: 28px;
+    color: var(--sv-text-color);
+    text-align: left;
+    padding: 2px 0 2px 30px;
+    position: relative;
+    opacity: 0.8;
+    transition: all 0.2s ease;
+}
+
+.choice-btn:hover {
+    opacity: 1;
+    color: var(--sv-highlight);
+    font-weight: normal;
+    transform: translateX(5px);
+    cursor: url('assets/Text Select.cur'), auto;
+}
+
+.choice-btn:hover::before {
+    content: ">";
+    position: absolute;
+    left: 5px;
+    color: var(--sv-highlight);
+    font-weight: bold;
+}
+
+.next-cursor {
+    position: absolute;
+    bottom: 20px;
+    right: 25px;
+    width: 30px;
+    height: 30px;
+    animation: cursor-bounce 0.8s infinite alternate;
+    display: none;
+    user-select: none;
+}
+
+.next-cursor::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 20px solid var(--sv-highlight);
+    filter: drop-shadow(0px 2px 1px rgba(0, 0, 0, 0.4));
+}
+
+.item-display {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: float 2s infinite ease-in-out;
+    display: none;
+    z-index: 50;
+    pointer-events: none;
+}
+
+.item-display img {
+    width: 100px;
+    filter: drop-shadow(0 0 20px rgba(255, 236, 214, 0.8));
+}
+
+@keyframes slide-up {
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes cursor-bounce {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(6px);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(5px);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translate(-50%, 0);
+    }
+    50% {
+        transform: translate(-50%, -20px);
+    }
+}
+
+@keyframes portrait-talk {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(2px);
+    }
+}
+
+@media (max-width: 800px) {
+    .interface-container {
+        width: 95%;
+        height: auto;
+        bottom: 20px;
+        flex-direction: column-reverse;
+    }
+    .portrait-box {
+        width: 100%;
+        height: 120px;
+        border-left: none;
+        border-bottom: 4px solid var(--sv-border-light);
+        border-radius: 4px 4px 0 0;
+    }
+    .dialogue-box {
+        height: auto;
+        min-height: 200px;
+        font-size: 24px;
+        border-radius: 0 0 4px 4px;
+    }
+    .item-display {
+        top: 10%;
+    }
+}
