@@ -139,7 +139,7 @@ function showFinalMessage() {
     setTimeout(() => {
         // Usamos textTarget.innerHTML para añadir el nuevo contenido
         const existingText = textTarget.innerHTML.split('<br>')[0];
-        textTarget.innerHTML = existingText + `<br><span class='success-message'><img src='assets/heart.png' class='heart-icon' alt='corazón'> +14 corazones <img src='assets/heart.png' class='heart-icon' alt='corazón'></span>`;
+        textTarget.innerHTML = existingText + `<br><span class='success-message'><img src='assets/heart.png' class='heart-icon' alt='corazón'> <span class="normal-plus">+</span>14 corazones <img src='assets/heart.png' class='heart-icon' alt='corazón'></span>`;
     }, 300);
 }
 

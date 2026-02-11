@@ -337,3 +337,8 @@ body {
     }
 }
 
+.normal-plus {
+    font-family: 'Arial', sans-serif; /* Usamos una fuente estándar y segura */
+    font-weight: bold; /* Lo hacemos negrita para que destaque un poco */
+}
+
