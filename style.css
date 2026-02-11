@@ -212,6 +212,7 @@ body {
 .item-display img {
     width: 100px;
     filter: drop-shadow(0 0 20px rgba(255, 236, 214, 0.8));
+    mix-blend-mode: screen; /* <-- Añade esta línea */
 }
 
 @keyframes slide-up {
