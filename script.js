@@ -142,3 +142,5 @@ function showFinalMessage() {
         textTarget.innerHTML = existingText + `<br><span class='success-message'><img src='assets/heart.png' class='heart-icon' alt='corazón'> +14 corazones <img src='assets/heart.png' class='heart-icon' alt='corazón'></span>`;
     }, 300);
 }
+
+//cambio
