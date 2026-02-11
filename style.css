@@ -337,8 +337,9 @@ body {
     }
 }
 
+/* Estilo para el signo '+' para que use una fuente normal */
 .normal-plus {
-    font-family: 'Arial', sans-serif; /* Usamos una fuente estándar y segura */
-    font-weight: bold; /* Lo hacemos negrita para que destaque un poco */
+    font-family: 'Arial', sans-serif; /* Fuente estándar y segura */
+    font-weight: bold;
 }
 
