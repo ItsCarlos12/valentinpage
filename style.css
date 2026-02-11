@@ -280,3 +280,58 @@ body {
         top: 10%;
     }
 }
+
+/* --- RESPONSIVE --- */
+@media (max-width: 800px) {
+    .interface-container {
+        width: 95%;
+        height: auto; /* Altura automática para adaptarse al contenido */
+        bottom: 15px; /* Un poco más pegado al borde inferior */
+        flex-direction: column-reverse; /* Apila el retrato sobre el diálogo */
+    }
+
+    .portrait-box {
+        width: 100%;
+        height: 110px; /* Altura fija para el retrato */
+        border-left: none;
+        border-bottom: 4px solid var(--sv-border-light);
+        border-radius: 8px 8px 0 0; /* Bordes redondeados solo arriba */
+    }
+
+    .portrait-img {
+        width: 100px; /* Reducimos un poco el tamaño del retrato */
+        height: 100px;
+    }
+
+    .name-tag {
+        bottom: 8px; /* Ajustamos la posición de la etiqueta con el nombre */
+        font-size: 20px;
+        padding: 3px 10px;
+    }
+
+    .dialogue-box {
+        height: auto;
+        min-height: 180px; /* Altura mínima para el texto */
+        font-size: 22px; /* Reducimos el tamaño de la fuente */
+        padding: 20px; /* Ajustamos el padding */
+        border-radius: 0 0 8px 8px; /* Bordes redondeados solo abajo */
+    }
+
+    .choice-btn {
+        font-size: 20px; /* Reducimos el tamaño de las opciones */
+    }
+
+    .item-display {
+        /* Movemos el colgante más arriba para que no se solape */
+        top: 15%; 
+    }
+
+    .item-display img {
+        width: 80px; /* Hacemos el colgante un poco más pequeño */
+    }
+
+    .next-cursor {
+        bottom: 15px;
+        right: 15px;
+    }
+}
